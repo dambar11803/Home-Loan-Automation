@@ -1,0 +1,236 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/application.css' %}"> {% endblock css %}
+{% block body %}
+<div class="formsection bg-body-tertiary">
+    <div class="inputform">
+     <form method="post">
+         {% csrf_token %}
+         {% load crispy_forms_tags %}
+         <!-- Personal Information Formsection-->
+        <div class="row form-personal" id ="form-personal">
+         <div class="app-header-text">Personal Information</div>
+         <div class="col text-red">
+             <div>
+                 {{ form.name|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.dob|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.citizenship|as_crispy_field }}
+             </div>
+         </div>
+        
+         <div class="col">
+             <div>
+                 {{ form.sex|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.father|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.martial|as_crispy_field }}
+             </div>
+         </div>
+         <div class="col">
+             <div>
+                 {{ form.education|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.address|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.dependent|as_crispy_field }}
+             </div>
+         </div>
+        </div>
+       
+        <!-- End of Personal Information Formsection-->
+
+        <!-- Employment Details Formsection-->
+        <div class="row form-employment" id ="form-employment">
+         <div class="app-header-text">Employment Details</div>
+             <div class="col">
+                 <div>
+                     {{ form.employer|as_crispy_field }}
+                 </div>
+                 <div>
+                     {{ form.position|as_crispy_field }}
+                 </div>
+             </div>
+             <div class="col">
+                 <div>
+                     {{ form.service_time|as_crispy_field }}
+                 </div>    
+        </div>
+
+        <!--Business Details-->
+        <div class="row form-business" id ="form-business">
+         <div class="app-header-text">Business Details</div>
+             <div class="col">
+                 <div>
+                     {{ form.firm_name|as_crispy_field }}
+                 </div>
+                 <div>
+                     {{ form.business_type|as_crispy_field }}
+                 </div>
+             </div>
+             <div class="col">
+                 <div>
+                     {{ form.pan_no|as_crispy_field }}
+                 </div>   
+                 <div>
+                     {{ form.firm_address|as_crispy_field }}
+                 </div>  
+        </div>
+
+       
+
+        <!-- Inocme Details Formsection-->
+        <div class="row form-income" id ="form-income">
+         <div class="app-header-text">Income Details</div>
+         <div class="col">
+             <div>
+                 {{ form.salary|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.business_income|as_crispy_field }}
+             </div>
+         </div>
+         <div class="col">
+             <div>
+                 {{ form.agriculture|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.house_rent|as_crispy_field }}
+             </div>
+         </div>
+         <div class="col">
+             <div>
+                 {{ form.family_income|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.other_income|as_crispy_field }}
+             </div>
+         </div>
+        </div>
+       
+
+        <!--Start of Collateral Information-->
+        <div class="row form-collateral" id ="form-collateral">
+         <div class="app-header-text">Collateral Details</div>
+         <div class="col">
+             <div>
+                 {{ form.plot_no|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.plot_area|as_crispy_field }}
+             </div>
+         </div>
+         <div class="col">
+             <div>
+                 {{ form.plot_owner|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.plot_address|as_crispy_field }}
+             </div>
+         </div>
+         <div class="col">
+             <div>
+                 {{ form.plot_value|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.plot_market_value|as_crispy_field }}
+             </div>
+             <div>
+                 {{ form.home_value|as_crispy_field }}
+             </div>
+         </div>
+            
+        <!--Start of Property Information-->
+        <div class="row form-propety" id ="form-property">
+         <div class="app-header-text">Other Property Details</div>
+             <div class="col">
+                 <div>
+                     {{ form.land_value|as_crispy_field }}
+                 </div>
+             </div>
+             <div class="col">
+                 <div>
+                     {{ form.buildingvalue|as_crispy_field }}
+                 </div>
+             </div>
+             <div class="col">
+                 <div>
+                     {{ form.family_property|as_crispy_field }}
+                 </div>
+                 <div>
+                     {{ form.vehicle|as_crispy_field }}
+                 </div>
+             </div>
+        </div>
+        
+
+         <!--Start of Loan Information-->
+         <div class="row form-loan" id ="form-loan">
+             <div class="app-header-text">Loan Application Details</div>
+             <div class="col">
+                 <div>
+                     {{ form.loan_amount|as_crispy_field }}
+                 </div>
+                 <div>
+                     {{ form.interest|as_crispy_field }}
+                 </div>
+             </div>
+             <div class="col">
+                 <div>
+                     {{ form.loan_type|as_crispy_field }}
+                 </div>
+                 <div>
+                     {{ form.tenure|as_crispy_field }}
+                 </div>
+             </div>
+            
+         </div>
+        
+
+         <!--Start of Credit Score Information-->
+         <div class="row form-creditscore" id ="form-creditscore">
+             <div class="app-header-text">Credit Score Details</div>
+             <div class="col">
+                 <div>
+                     {{ form.collateral_place|as_crispy_field }}
+                 </div>
+                 <div>
+                     {{ form.income_tenure|as_crispy_field }}
+                 </div>
+             </div>
+             <div class="col">
+                 <div>
+                     {{ form.client_distance|as_crispy_field }}
+                 </div>
+                 <div>
+                     {{ form.banking_year|as_crispy_field }}
+                 </div>
+             </div>
+             <div class="col">
+                 <div>
+                     {{ form.banking_history|as_crispy_field }}
+                 </div>
+                 <div>
+                     {{ form.loan_committee|as_crispy_field }}
+                 </div>
+             </div>
+         </div>
+        
+             <div class="submit-btn text-center">
+                 <input type="submit" value= "Submit">
+             </div>
+     </form>
+
+    </div>
+   </div>
+ 
+{% endblock body %}

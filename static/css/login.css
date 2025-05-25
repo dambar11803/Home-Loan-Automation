@@ -1,0 +1,152 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Main Login Container */
+.login-section {
+    display: flex;
+    max-width: 900px;
+    width: 90%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header Section */
+.header-section {
+    flex: 1;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    padding: 2rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header-text1 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.header-text2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Form Section */
+.form-section {
+    flex: 1;
+    padding: 3rem 2.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.form-control {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.help-block {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-section {
+        flex-direction: column;
+        width: 95%;
+    }
+    
+    .header-section {
+        padding: 1.5rem;
+    }
+    
+    .header-text1 {
+        font-size: 1.5rem;
+    }
+    
+    .header-text2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-section {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-text1 {
+        font-size: 1.3rem;
+    }
+    
+    .header-text2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-control {
+        padding: 0.7rem 0.9rem;
+    }
+    
+    button[type="submit"] {
+        padding: 0.8rem;
+    }
+}

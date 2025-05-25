@@ -1,0 +1,376 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/client_detail.css' %}">
+{% endblock css %}
+
+{% block body %}
+<div class="container-fluid">
+    <!-- Customer Information Section -->
+    <div class="personal-info table-css">
+        <h4 class="text-center">Customer Information</h4>
+        <table class="table">
+            <tr>
+                <th colspan="2">Personal Information</th>
+            </tr>
+            <tr>
+                <td>Customer Name</td>
+                <td>{{ client.name }}</td>
+            </tr>
+            <tr>
+                <td>Citizenship No.</td>
+                <td>{{ client.citizenship }}</td>
+            </tr>
+            <tr>
+                <td>Father's Name</td>
+                <td>{{ client.father }}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{ client.address }}</td>
+            </tr>
+            <tr>
+                <td>Education</td>
+                <td>{{ client.education }}</td>
+            </tr>
+            <tr>
+                <td>Dependent No.</td>
+                <td>{{ client.dependent }}</td>
+            </tr>
+            <tr>
+                <td>Gender: {{ client.sex }}</td>
+                <td>Martial Status: {{ client.martial }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">Employment Section</th>
+            </tr>
+            <tr>
+                <td>Employer Name</td>
+                <td>{{ client.employer }}</td>
+            </tr>
+            <tr>
+                <td>Position</td>
+                <td>{{ client.position }}</td>
+            </tr>
+            {% if client.business %}
+            <tr>
+                <td>Business</td>
+                <td>{{ client.business }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    <!-- Income Section -->
+    <div class="income-section table-css">
+        <table>
+            <tr>
+                <th colspan="2">Income Section</th>
+            </tr>
+            <tr>
+                <td>Client Salary (Yearly)</td>
+                <td>Rs. {{ client.salary }}</td>
+            </tr>
+            <tr>
+                <td>Client Business Income (Yearly)</td>
+                <td>Rs. {{ client.business_income }}</td>
+            </tr>
+            <tr>
+                <td>Agriculture (Yearly)</td>
+                <td>Rs. {{ client.agriculture }}</td>
+            </tr>
+            <tr>
+                <td>House Rent Income (Yearly)</td>
+                <td>Rs. {{ client.house_rent }}</td>
+            </tr>
+            <tr>
+                <td>Family Income (Yearly)</td>
+                <td>Rs. {{ client.family_income }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Loan Details Section -->
+    <div class="loan-section table-css">
+        <table>
+            <tr>
+                <th colspan="2">Loan Application</th>
+            </tr>
+            <tr>
+                <td>Loan ID</td>
+                <td>{{ client.loan_id }}</td>
+            </tr>
+            <tr>
+                <td>Loan Type</td>
+                <td>{{ client.loan_type }} Loan</td>
+            </tr>
+            <tr>
+                <td>Loan Amount (Proposed)</td>
+                <td>Rs. {{ client.loan_amount }}</td>
+            </tr>
+            <tr>
+                <td>Loan Tenure</td>
+                <td>{{ client.tenure }} Years</td>
+            </tr>
+            <tr>
+                <td>Interest</td>
+                <td>{{ client.interest }}%</td>
+            </tr>
+            <tr>
+                <td>Home Distress Value</td>
+                <td>{{ client.home_value }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Collateral Details Section -->
+    <div class="collateral table-css">
+        <table>
+            <tr>
+                <th colspan="2">Proposed Collateral</th>
+            </tr>
+            <tr>
+                <td>Plot No.</td>
+                <td>{{ client.plot_no }}</td>
+            </tr>
+            <tr>
+                <td>Plot Area</td>
+                <td>{{ client.plot_area }}</td>
+            </tr>
+            <tr>
+                <td>Plot Owner</td>
+                <td>{{ client.plot_owner }}</td>
+            </tr>
+            <tr>
+                <td>Plot Market Value</td>
+                <td>Rs. {{ client.plot_market_value }}</td>
+            </tr>
+            <tr>
+                <td>Plot Distress Value</td>
+                <td>Rs. {{ client.plot_value }}</td>
+            </tr>
+            <tr>
+                <td>Building Value</td>
+                <td>Rs. {{ client.home_value }}</td>
+            </tr>
+            <tr>
+                <td>Vehicle Value</td>
+                <td>Rs. {{ client.vehicle }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Property Section -->
+    <div class="property table-css">
+        <table>
+            <tr>
+                <th colspan="2">Other Property</th>
+            </tr>
+            <tr>
+                <td>Land Value</td>
+                <td>Rs. {{ client.land_value }}</td>
+            </tr>
+            <tr>
+                <td>Building Value</td>
+                <td>Rs. {{ client.buildingvalue }}</td>
+            </tr>
+            <tr>
+                <td>Family Property</td>
+                <td>Rs. {{ client.family_property }}</td>
+            </tr>
+            <tr>
+                <td>Total Collateral Value</td>
+                <td>Rs. {{ client.tot_coll }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Credit Ratio Section -->
+    <div class="credit-ratio table-css">
+        <table>
+            <tr>
+                <th colspan="4">Credit Ratios</th>
+            </tr>
+            <tr>
+                <td>कुल लागत</td>
+                <td>Rs. {{ client.home_value }}</td>
+                <td>मासिक आय</td>
+                <td>Rs. {{ client.monthly_income }}</td>
+            </tr>
+            <tr>
+                <td>निजि लगानी</td>
+                <td>Rs. {{ client.selfinvest }}</td>
+                <td>मासिक बचत</td>
+                <td>Rs. {{ client.monthly_saving }}</td>
+            </tr>
+            <tr>
+                <td>ऋण रकम</td>
+                <td>Rs. {{ client.loan_amount }}</td>
+                <td>मासिक किस्ता रकम</td>
+                <td>Rs. {{ client.emi }}</td>
+            </tr>
+            <tr>
+                <td>सुरक्षणको कुल मुल्य</td>
+                <td>Rs. {{ client.tot_coll }}</td>
+                <td>मासिक किस्ता / मासिक आय प्रतिसत</td>
+                <td>{{ client.kista_to_income }}%</td>
+            </tr>
+            <tr>
+                <td>ऋण / सुरक्षण मूल्य प्रतिसत</td>
+                <td>{{ client.loan_to_coll }}%</td>
+                <td>मासिक किस्ता / मासिक बचत प्रतिसत</td>
+                <td>{{ client.kista_to_income }}%</td>
+            </tr>
+            <tr>
+                <td>ऋण / कुल लागत प्रतिसत</td>
+                <td>{{ client.loan_to_invest }}%</td>
+                <td>ऋण भुक्तानी अवधि</td>
+                <td>१५ बर्ष</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Credit Score Calculation -->
+    <div class="credit-score table-css">
+        <table>
+            <tr>
+                <th colspan="4">Credit Score</th>
+            </tr>
+            <tr>
+                <td>Particulars</td>
+                <td>Weight</td>
+                <td>Score</td>
+                <td>Total Score</td>
+            </tr>
+            <tr>
+                <td>सुरक्षण मुल्य र कर्जा रकम अनुपात</td>
+                <td>0.20</td>
+                <td>{{ client.p1 }}</td>
+                <td>{{ client.p1_weight }}</td>
+            </tr>
+            <tr>
+                <td>सुरक्षणको विक्रियोग्य (Salable) को अनुपात</td>
+                <td>0.10</td>
+                <td>{{ client.p2 }}</td>
+                <td>{{ client.p2_weight }}</td>
+            </tr>
+            <tr>
+                <td>खुद सम्पति ऋण अनुपात</td>
+                <td>0.10</td>
+                <td>{{ client.p3 }}</td>
+                <td>{{ client.p3_weight }}</td>
+            </tr>
+            <tr>
+                <td>किस्ता भुक्तानी क्षमता अनुपात</td>
+                <td>0.20</td>
+                <td>{{ client.p4 }}</td>
+                <td>{{ client.p4_weight }}</td>
+            </tr>
+            <tr>
+                <td>आम्दानीको प्रकुतिको आधार</td>
+                <td>0.10</td>
+                <td>{{ client.p5 }}</td>
+                <td>{{ client.p5_weight }}</td>
+            </tr>
+            <tr>
+                <td>धितो अनुगमनको सुगमता</td>
+                <td>0.05</td>
+                <td>{{ client.p6 }}</td>
+                <td>{{ client.p6_wt }}</td>
+            </tr>
+            <tr>
+                <td>ग्राहकको ऋण भुक्तानी इतिहास</td>
+                <td>0.05</td>
+                <td>{{ client.p7 }}</td>
+                <td>{{ client.p7_wt }}</td>
+            </tr>
+            <tr>
+                <td>यस बैंकसंग बैंकिंग कारोबार सुरु गरेको अवधि</td>
+                <td>0.05</td>
+                <td>{{ client.p8 }}</td>
+                <td>{{ client.p8_wt }}</td>
+            </tr>
+            <tr>
+                <td>शाखा स्तरीय कर्जा कमिटिको सिफारिस</td>
+                <td>0.15</td>
+                <td>{{ client.p9 }}</td>
+                <td>{{ client.p9_wt }}</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total Score</td>
+                <td>{{ client.total_score }}</td>
+            </tr>
+            <tr>
+                <td colspan="3">Result</td>
+                <td>{{ client.credit_result }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Final Approval Section -->
+    <div class="final-approval">
+        <h4>Final Approval</h4>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>{{ client.name }}</td>
+                <th>Monthly Income</th>
+                <td>{{ client.monthly_income }}</td>
+                <th class="text-primary">Remarks</th>
+                <th>Home (Distress Value)</th>
+                <td>{{ client.home_value }}</td>
+                <th class="text-primary">Remarks</th>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ client.address }}</td>
+                <th>Monthly Saving</th>
+                <td>{{ client.monthly_saving }}</td>
+                <td>
+                    {% if client.monthly_saving < client.emi %}
+                        <i class="ri-close-circle-fill text-danger fs-4"></i>
+                    {% else %}
+                        <i class="ri-checkbox-fill fs-4 text-success"></i>
+                    {% endif %}
+                </td>
+                <th>Loan Amount (Proposed)</th>
+                <td>{{ client.loan_amount }}</td>
+                <td>
+                    {% if client.loan_amount > client.actual_loan_amt %}
+                        <i class="ri-close-circle-fill text-danger fs-4"></i>
+                    {% else %}
+                        <i class="ri-checkbox-fill fs-4 text-success"></i>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Interest Rate</th>
+                <td>{{ client.interest }}%</td>
+                <th>Credit Score</th>
+                <td>{{ client.total_score }} ({{ client.credit_result }})</td>
+                <td>
+                    {% if client.total_score > 3 %}
+                        <i class="ri-close-circle-fill text-danger fs-4"></i>
+                    {% else %}
+                        <i class="ri-checkbox-fill fs-4 text-success"></i>
+                    {% endif %}
+                </td>
+                <th>Monthly EMI</th>
+                <td>{{ client.emi }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="9" class="text-center">
+                    <form method="POST" action="{% url 'approve_reject' client.id %}">
+                        {% csrf_token %}
+                        <input type="submit" name="approved" class="btn btn-success" value="Approved">
+                        <input type="submit" name="rejected" class="btn btn-primary" value="Rejected">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock body %}

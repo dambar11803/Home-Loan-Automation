@@ -1,0 +1,105 @@
+/* EMI Calculator Styles */
+.emiform {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.emiform form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.emiform p {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.emiform label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.emiform input[type="number"],
+.emiform input[type="text"],
+.emiform select {
+    padding: 0.8rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.emiform input[type="number"]:focus,
+.emiform input[type="text"]:focus,
+.emiform select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
+}
+
+.emiform input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.emiform input[type="submit"]:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Result Display */
+.emiform p:last-of-type {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #3498db;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .emiform {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .emiform {
+        padding: 1rem;
+    }
+    
+    .emiform input[type="number"],
+    .emiform input[type="text"],
+    .emiform select {
+        padding: 0.7rem;
+    }
+    
+    .emiform input[type="submit"] {
+        padding: 0.8rem;
+    }
+}

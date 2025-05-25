@@ -1,0 +1,62 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/loan_status.css' %}"> {% endblock css %}
+{% block body %}
+<div class="container mt-4">
+    <h2>Loan Settlement</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">Search Account</button>
+            </form>
+        </div>
+    </div>
+
+    {% if disbursement %}
+    <div class="card">
+        <div class="card-header">
+            <h4>Loan Account Details</h4>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <th>Client Name</th>
+                    <td>{{ disbursement.client.name }}</td>
+                </tr>
+                <tr>
+                    <th>Account Number</th>
+                    <td>{{ disbursement.account_no }}</td>
+                </tr>
+                <tr>
+                    <th>Disbursement Date</th>
+                    <td>{{ disbursement.disbursement_date }}</td>
+                </tr>
+                <tr>
+                    <th>Loan Amount</th>
+                    <td>Rs. {{ disbursement.client.loan_amount }}</td>
+                </tr>
+                <tr>
+                    <th>Current Status</th>
+                    <td>{{ disbursement.disbursement_status }}</td>
+                </tr>
+            </table>
+
+            {% if show_settle_button %}
+            <form method="post" action="{% url 'settle_loan_account' disbursement.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger"
+                    onclick="return confirm('Are you sure you want to settle this loan account?')">
+                    Settle Loan Account
+                </button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock body %}

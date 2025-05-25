@@ -1,0 +1,47 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/client_list.css' %}"> {% endblock css %}
+{% block body %}
+    <div class="view_clients">
+        <h3 class="display-info text-center">Customer Applications</h3>
+        <!--Table Starts-->
+        <div class="table-section ml-5 text-center center">
+            <table class="table center ml-5">
+                <tr>
+                    <th>S.N</th>
+                    <th>Name</th>
+                    <th>Father</th>
+                    <th>Address</th>
+                    <th>Citizenship</th>
+                    <th>Gender</th>
+                    <th>Martial</th>
+                    <th>Edit</th>
+                    <th colspan="2" class="text-center">Loan Approval</th>
+                                        
+                </tr>
+                {% for client in clients %} 
+                    {% if client.loan_status == "preview" %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{client.name}}</td>
+                            <td>{{client.father}}</td>
+                            <td>{{client.address}}</td>
+                            <td>{{client.citizenship}}</td>
+                            <td>{{client.sex}}</td>
+                            <td>{{client.martial}}</td>
+                            <td class="text-center action btn1"><a href="{% url 'client_update' client.pk %}" class="bg-primary a-btn">Update</a></td>
+                            <td class="text-center action btn1"><a href="{% url 'client_detail' client.pk %}" class="bg-success a-btn">Manual</a></td>
+                            {% comment %} <td class="text-center action text-danger"><i class="ri-delete-bin-fill"><a href="{% url 'client_delete' client.pk %}" class="text-danger">Delete</a></i></td> {% endcomment %}
+                           
+                        </tr>
+                    {% endif %}    
+                {% empty %}
+                    <div class="no-items">There are no any clients Record(s).</div>
+                {% endfor %}
+    
+            </table>
+        </div>
+    </div>
+
+{% endblock body %}

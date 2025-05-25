@@ -1,0 +1,206 @@
+/* client_detail.css */
+
+/* General Styles */
+.personal-info, 
+.income-section, 
+.loan-section, 
+.collateral, 
+.property, 
+.credit-ratio, 
+.credit-score, 
+.final-approval {
+    margin: 20px auto;
+    width: 80%; /* Changed from max-width to fixed width */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white; /* Added for better contrast */
+}
+
+h4.text-center {
+    color: #2c3e50;
+    padding: 15px 0;
+    margin: 0;
+    background-color: #f8f9fa;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Table Styles */
+.table-css table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.table-css th {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.table-css td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table-css tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.table-css tr:hover {
+    background-color: #f1f7fd;
+}
+
+/* Section-specific Styles */
+.income-section table,
+.loan-section table,
+.collateral table,
+.property table {
+    margin-bottom: 20px;
+}
+
+/* Credit Ratio Section */
+.credit-ratio table td,
+.credit-score table td {
+    padding: 8px 12px;
+}
+
+/* Final Approval Section */
+.final-approval {
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-top: 30px;
+    width: 80%; /* Added to match other containers */
+}
+
+.final-approval h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.final-approval table {
+    width: 100%;
+}
+
+.final-approval th {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 10px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.final-approval td {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.text-primary {
+    color: #3498db !important;
+}
+
+.text-danger {
+    color: #e74c3c !important;
+}
+
+.text-success {
+    color: #2ecc71 !important;
+}
+
+.fs-4 {
+    font-size: 1.2em;
+}
+
+/* Form Buttons */
+.btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .personal-info, 
+    .income-section, 
+    .loan-section, 
+    .collateral, 
+    .property, 
+    .credit-ratio, 
+    .credit-score, 
+    .final-approval {
+        width: 95%; /* More width on mobile */
+    }
+    
+    .table-css table,
+    .final-approval table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .final-approval table tr {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .final-approval table th,
+    .final-approval table td {
+        flex: 1 1 150px;
+        box-sizing: border-box;
+    }
+    
+    .credit-ratio table td,
+    .credit-score table td {
+        padding: 6px 8px;
+        font-size: 0.8em;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .personal-info, 
+    .income-section, 
+    .loan-section, 
+    .collateral, 
+    .property, 
+    .credit-ratio, 
+    .credit-score, 
+    .final-approval {
+        visibility: visible;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        width: 100%; /* Full width for printing */
+        page-break-after: always;
+    }
+    .final-approval {
+        page-break-after: auto;
+    }
+}

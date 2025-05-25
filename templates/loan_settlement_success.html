@@ -1,0 +1,41 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/loan_status.css' %}"> {% endblock css %}
+{% block body %}
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h2 class="mb-0"><i class="fas fa-check-circle"></i> Loan Successfully Settled</h2>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-success">
+                <h4 class="alert-heading">Congratulations!</h4>
+                <p>The loan account has been successfully settled.</p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Client Name:</strong> {{ name }}</p>
+                        <p><strong>Account Number:</strong> {{ account_no }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Settlement Date:</strong> {{ settle_date }}</p>
+                        <p><strong>Loan Amount:</strong> Rs. {{ loan_amount }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{% url 'loan_settlement' %}" class="btn btn-primary me-2">
+                    <i class="fas fa-undo"></i> Settle Another Loan
+                </a>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                    <i class="fas fa-home"></i> Return to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

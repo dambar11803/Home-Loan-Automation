@@ -1,0 +1,54 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/loan_status.css' %}"> {% endblock css %}
+{% block body %}
+    <div class="loan-status-section">
+        <div class="title-text text-center text-primary">
+           Loan Disbrusement
+        </div>
+       <br>
+        <div><a href="{% url 'creditresult_csv'%}" class="text-white ml-5 bg-success exl-btn">Excel</a></div>
+        <!--Table Starts-->
+        <div class="table-section ml-5 text-center center">
+            <table class="table text-center">
+                <tr class="text-center">
+                    <th>S.N</th>
+                    <th>Name</th>
+                    <th>Citizenship</th>
+                    <th>Gender</th>
+                    <th>Loan Amount</th>
+                    <th>Interest Rate</th>
+                    <th>Tenure</th>
+                    <th>EMI Amount</th>
+                    <th>Monthly Saving</th>
+                    <th>Loan Status</th>
+                    <th>Disbrusement</th>                 
+                </tr>
+                {% for client in approved_clients %} 
+                    {% if client.loan_status == "approved" %}
+                        <tr class="text-center">
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{client.name}}</td>
+                            <td>{{client.citizenship}}</td>
+                            <td>{{client.sex}}</td>
+                            <td>{{client.loan_amount}}</td>
+                            <th>{{client.interest}}</th>
+                            <td>{{client.tenure}}</td>
+                            <td>{{client.emi}}</td>
+                            <td>{{client.monthly_saving}}</td>
+                            <td>{{client.loan_status}}</td>
+                            <td>
+                            <a href="{% url 'loan_disbursement' client.id %}" class="btn btn-success">Disburse Loan</a>
+                            </td>                           
+                        </tr>
+                    {% endif %}    
+                {% empty %}
+                    <div class="no-items">There are no any clients Record(s).</div>
+                {% endfor %}
+    
+            </table>
+        </div>
+    </div>
+
+{% endblock body %}

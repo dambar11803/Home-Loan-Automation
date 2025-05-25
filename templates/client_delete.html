@@ -1,0 +1,17 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/client_delete.css' %}"> {% endblock css %}
+{% block body %}
+
+<div class="container text-center del-form center">
+    <form action="" method="POST" class="d-form">
+        {% csrf_token %}
+        <div class="confirm-text">Are your want to delete {{client}}?</div>
+        <input type="submit" value="Delete">
+    </form>
+    </div>
+
+
+ 
+{% endblock body %}

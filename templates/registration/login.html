@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}"/>
+  </head>
+  <body>
+    <div class="login-section center container">
+      <div class="header-section v-center">
+        <div class="header-text">
+            <p class="header-text1">AUTOMATED</p> 
+        <P class="header-text2">HOME LOAN SYSTEM</P>
+        </div>
+      </div>
+      
+      <div class="form-section">
+        <form method="POST" target="_self" novalidate>
+          {% csrf_token %}
+
+          <!-- tweak form -->
+          {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+          {% endfor %}
+
+          {% for field in form.visible_fields %}
+            <div class="form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field|add_class:'form-control' }}
+              {% for error in field.errors %}
+                <span class="help-block">{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% endfor %}
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="" async defer></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/client_list.css' %}"> {% endblock css %}
+{% block body %}
+   
+    <div class="delete-form">
+        <form method="post">
+            {% csrf_token %}
+            <p>Are you sure you want to delete ?</p>
+                {{ form }}
+            <input type="submit" value="Confirm">
+        </form>
+    </div>
+
+{% endblock body %}

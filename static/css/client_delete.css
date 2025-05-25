@@ -1,0 +1,34 @@
+
+
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+  }
+
+  .del-form{
+    /* border:1px solid grey; */
+    width:500px;
+    width:300px;
+  }
+
+  .d-form{
+    background-color: #B6E5E4;
+    
+  }
+
+  .confirm-text{
+    padding:20px 30px;
+    color:red;
+  }
+
+  input[type=submit]{
+    padding:5px 15px;
+    margin:15px 20px;
+    background-color:#708090;
+    color:white;
+    border:none;
+  }
